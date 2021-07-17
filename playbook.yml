@@ -1,0 +1,39 @@
+---
+- hosts: javaserver
+  name: installing Java
+  gather_facts: true
+  become: yes
+  tasks:
+   - name: update repositories
+     yum:
+       name: "*"
+       state: latest
+   - name: installing openjdk
+     yum:
+       name: java-1.8.0-openjdk
+
+
+- hosts: nodejs
+  become: yes
+  tasks:
+   - name: create common directory
+     file:
+       path: "{{ item }}"
+       state: directory
+     with_items:
+       - /home/ec2-user/node_js
+
+   - name: Ensure Node.js and npm are installed
+     yum:
+       name: "*"
+       state: latest
+
+   - name: Install Node from the EPEL Repository
+     shell: |
+       curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+
+
+   - name: Install Node JS
+     yum:
+       name: nodejs
+       state: installed

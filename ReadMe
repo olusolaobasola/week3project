@@ -1,0 +1,8 @@
+WEEK 3 PROJECT 
+
+
+You have been asked to use Terraform to create 3 nodes, then Ansible to provision node 2 and 3: 
+Node 1:   This should be setup as your tool server, where Ansible should be installed, preferably via Terraform. 
+Node 2:  Java provisioned on the node via Ansible playbook 
+Node 3: NodeJS provisioned on the node via Ansible playbook 
+
